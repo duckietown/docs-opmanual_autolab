@@ -28,7 +28,7 @@ The parameters:
 
 Command to flash:
 
-    laptop $ dts init_sd_card --hostname ![concat_map_name] --type duckietown --configuration DT20 --country ![country_code]
+    laptop $ dts init_sd_card --hostname ![concat_map_name] --type duckietown --configuration DT21 --country ![country_code]
 
 
 ### Connect to network and boot
