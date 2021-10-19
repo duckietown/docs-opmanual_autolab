@@ -2,7 +2,7 @@
 
 <div class='requirements' markdown="1">
 
-Requires: A Duckietown up to specifications from [the duckietown book](+opmanual_duckietown#duckietowns).
+Requires: A Duckietown up to specifications from [the duckietown book](+opmanual_duckietown#book).
 
 Results: Your software environment is setup.
 

@@ -4,7 +4,7 @@ excerpt:
 
 <div class='requirements' markdown="1">
 
-Requires: A Duckietown up to specifications from [the Duckietown book](+opmanual_duckietown#duckietowns).
+Requires: A Duckietown up to specifications from [the Duckietown book](+opmanual_duckietown#book).
 
 Results: Knowledge of the fundamental structures that make an Autolab.
 

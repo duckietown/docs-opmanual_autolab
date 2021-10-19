@@ -4,7 +4,8 @@ Excerpt: The manual to run localization offline or online. - TODO
 
 <div class='requirements' markdown="1">
 
-Requires: A fully operational [Duckietown](+opmanual_duckietown#duckietowns), compliant [autobots](#autolab-autobot-specs), [watchtowers](#watchtower-hardware) and a system of [ground April tags](#localization-apriltags-specs)
+Requires: A fully operational [Duckietown](+opmanual_duckietown#book), compliant [autobots](#autolab-autobot-specs
+), [watchtowers](#watchtower-hardware) and a system of [ground April tags](#localization-apriltags-specs)
 
 Results: running offline or online localization in the Autolab
 

@@ -2,7 +2,7 @@
 
 <div class='requirements' markdown="1">
 
-Requires: A fully operational [Duckietown](+opmanual_duckietown#duckietowns)
+Requires: A fully operational [Duckietown](+opmanual_duckietown#book)
 
 Results: A working localization system to localize all Autobots inside the Autolab
 

@@ -4,7 +4,8 @@ Excerpt:  The AprilTag specifications and measure.
 
 <div class='requirements' markdown="1">
 
-Requires: A fully operational [Duckietown](+opmanual_duckietown#duckietowns), compliant [autobots](#autolab-autobot-specs) and a [map of the Autolab](#autolab-map-making).
+Requires: A fully operational [Duckietown](+opmanual_duckietown#book), compliant [autobots](#autolab-autobot-specs) and
+ a [map of the Autolab](#autolab-map-making).
 
 Results: The city is ready to be used for localization
 
