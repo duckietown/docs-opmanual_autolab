@@ -1,4 +1,4 @@
-# The Autolab {#book:book-autolab status=ready}
+# The Autolab {#book:book status=ready}
 
 <div class='requirements' markdown="1">
 
