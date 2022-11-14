@@ -19,7 +19,7 @@ Next Steps: Contribute to [localization software](#autolab-localization-software
 
 The localization pipeline needs a __master__ computer that will receive all information and process it. In order for everything to work, you need a kinetic roscore running at all times, and it needs to be run first.
 
-    laptop $ docker run --name roscore --rm --net=host -dit duckietown/dt-ros-commons:daffy-amd64 roscore
+    laptop $ docker run --name roscore --rm --net=host -dit duckietown/dt-ros-commons:daffy roscore
 
 If this container is stopped at some point, then all the acquisition bridges (see below) need to be restarted, as they need connection to this rosmaster.
 
@@ -115,7 +115,7 @@ and stop it at the end of the experiment.
 
 First, you need to know where your bag is. The folder containing it is referred as `PATH_TO_BAG_FOLDER` in the following. We recommend you create new separate folders for each experiment (with date and/or sequence number).
 
-    laptop $ docker run --name post_processor -dit --rm -e INPUT_BAG_PATH=/data/![BAG_NAME.BAG] -e OUTPUT_BAG_PATH=/data/processed_![BAG_NAME.BAG] -e ROS_MASTER_URI=http://![YOUR_IP]:11311 -v ![PATH_TO_BAG_FOLDER]:/data duckietown/post-processor:daffy-amd64
+    laptop $ docker run --name post_processor -dit --rm -e INPUT_BAG_PATH=/data/![BAG_NAME.BAG] -e OUTPUT_BAG_PATH=/data/processed_![BAG_NAME.BAG] -e ROS_MASTER_URI=http://![YOUR_IP]:11311 -v ![PATH_TO_BAG_FOLDER]:/data duckietown/post-processor:daffy
 
 When the container stops, then you should have a new bag called `processed_BAG_NAME.BAG` inside of your `PATH_TO_BAG_FOLDER`.
 
@@ -125,7 +125,7 @@ Remember from [](#autolab-map-making) that you created a map. Now is the time to
 
 To run localization, execute:
 
-    laptop $ docker run --rm  -e  ATMSGS_BAG=/data/processed_![BAG_NAME.BAG] -e OUTPUT_DIR=/data -e ROS_MASTER=![YOUR_HOSTNAME] -e ROS_MASTER_IP=![YOUR_IP] --name graph_optimizer -v ![PATH_TO_BAG_FOLDER]:/data -e DUCKIETOWN_WORLD_FORK=![YOUR_FORK_NAME] -e MAP_NAME=![YOUR_MAP_NAME] duckietown/cslam-graphoptimizer:daffy-amd64
+    laptop $ docker run --rm  -e  ATMSGS_BAG=/data/processed_![BAG_NAME.BAG] -e OUTPUT_DIR=/data -e ROS_MASTER=![YOUR_HOSTNAME] -e ROS_MASTER_IP=![YOUR_IP] --name graph_optimizer -v ![PATH_TO_BAG_FOLDER]:/data -e DUCKIETOWN_WORLD_FORK=![YOUR_FORK_NAME] -e MAP_NAME=![YOUR_MAP_NAME] duckietown/cslam-graphoptimizer:daffy
 
 The poses can then be visualized in Rviz as the optimization advance.
 
@@ -146,13 +146,13 @@ Normally, at this point, you should have a duckiebot-interface and a acquisition
 
 For each Watchtower that is running do on your computer :
 
-    laptop $ docker run --name apriltag_processor_![WATCHTOWER_NUMBER] --network=host -dit --rm  -e ROS_MASTER_URI=http://![YOUR_IP]:11311 -e ACQ_DEVICE_NAME=![WATCHTOWER_NAME] duckietown/apriltag-processor:daffy-amd64
+    laptop $ docker run --name apriltag_processor_![WATCHTOWER_NUMBER] --network=host -dit --rm  -e ROS_MASTER_URI=http://![YOUR_IP]:11311 -e ACQ_DEVICE_NAME=![WATCHTOWER_NAME] duckietown/apriltag-processor:daffy
 
 Where `WATCHTOWER_NUMBER` is just 01 to XX and `WATCHTOWER_NAME` is the hostname of the Watchtower (usually it is `watchtowerXX`).
 
 For each Autobot that is running do on your computer :
 
-    laptop $ docker run --name odometry_processor_![AUTOBOT_NUMBER] --network=host -dit --rm  -e ACQ_ROS_MASTER_URI_SERVER_IP=![YOUR_IP] -e ACQ_DEVICE_NAME=![AUTOBOT_NAME] duckietown/wheel-odometry-processor:daffy-amd64
+    laptop $ docker run --name odometry_processor_![AUTOBOT_NUMBER] --network=host -dit --rm  -e ACQ_ROS_MASTER_URI_SERVER_IP=![YOUR_IP] -e ACQ_DEVICE_NAME=![AUTOBOT_NAME] duckietown/wheel-odometry-processor:daffy
 
 Where `AUTOBOT_NUMBER` is just 01 to XX and `AUTOBOT_NAME` is the hostname of the Autobot (usually it is `autobotXX`).
 
@@ -162,7 +162,7 @@ Warning: The processing of apriltags is very heavy. Putting more than 4 processo
 
 Once the online processing is started (or even before), run:
 
-    laptop $ docker run --rm -e OUTPUT_DIR=/data -e ROS_MASTER=![YOUR_HOSTNAME] -e ROS_MASTER_IP=![YOUR_IP] --net=host --name graph_optimizer -v ![PATH_TO_RESULT_FOLDER]:/data -e DUCKIETOWN_WORLD_FORK=![YOUR_FORK_NAME] -e MAP_NAME=![YOUR_MAP_NAME] duckietown/cslam-graphoptimizer:daffy-amd64
+    laptop $ docker run --rm -e OUTPUT_DIR=/data -e ROS_MASTER=![YOUR_HOSTNAME] -e ROS_MASTER_IP=![YOUR_IP] --net=host --name graph_optimizer -v ![PATH_TO_RESULT_FOLDER]:/data -e DUCKIETOWN_WORLD_FORK=![YOUR_FORK_NAME] -e MAP_NAME=![YOUR_MAP_NAME] duckietown/cslam-graphoptimizer:daffy
 
 The `PATH_TO_RESULT_FOLDER` folder is the one where the results will be saved in yaml files at the end of the experiment, when you CTRL+C the above command to finish.
 
